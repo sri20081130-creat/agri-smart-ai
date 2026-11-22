@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#244b32">
+<title>Agri Smart AI | Farmer's Companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#263126;--paper:#f5f2e9;--card:#fffdf7;--green:#28583a;--green2:#3f754d;--gold:#d9a441;--clay:#a95635;--muted:#697365;--line:#e4e0d4;--shadow:0 12px 32px rgba(37,55,37,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 "DM Sans","Noto Sans",system-ui,sans-serif;padding-bottom:86px}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(245,242,233,.91),rgba(245,242,233,.96)),url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85") center/cover}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;margin:0 0 .5em}h1{font-size:clamp(2rem,5vw,3.1rem)}h2{font-size:1.45rem}h3{font-size:1.1rem}p{margin:.45em 0 1em}a{color:var(--green);font-weight:700}
+header{max-width:1120px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green);letter-spacing:.02em}.brand-mark{width:38px;height:38px;border-radius:13px;background:var(--green);color:white;display:grid;place-items:center;font-size:21px}
+.lang{max-width:230px;border-radius:999px!important;padding:9px 13px!important}
+main{max-width:1120px;margin:auto;padding:12px 20px 30px}.screen[hidden]{display:none}.screen{animation:rise .35s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{position:relative;overflow:hidden;border-radius:12px 34px 12px 34px;color:#fff;padding:clamp(25px,5vw,48px);background:linear-gradient(100deg,rgba(20,58,34,.94),rgba(32,82,47,.65)),url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=90") center/cover;box-shadow:var(--shadow)}
+.hero p{max-width:650px;color:#f2f5e9;font-size:1.05rem}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:.72rem;font-weight:800;color:#f1cf83}
+.card{background:rgba(255,253,247,.96);border:1px solid var(--line);border-radius:19px;padding:20px;margin:16px 0;box-shadow:var(--shadow)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.feature{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fffefa}
+label{display:block;font-weight:700;color:var(--muted);font-size:.88rem;margin:13px 0 5px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);padding:12px 13px;border:1px solid #d8d5c9;border-radius:11px;background:#fff;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--green2);box-shadow:0 0 0 3px rgba(63,117,77,.13)}
+button{font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:999px;padding:11px 18px;background:var(--green);color:#fff;transition:.2s;margin-top:10px}
+button:hover{background:var(--green2);transform:translateY(-1px)}button.secondary{background:#edf2e9;color:var(--green);border:1px solid #d5e1d1}button.tertiary{background:transparent;color:var(--green);border:1px solid var(--green)}button.danger{background:var(--clay)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1}
+.notice{padding:12px 15px;border-radius:12px;background:#fff4d7;border-left:4px solid var(--gold);font-size:.9rem}
+.tag{display:inline-block;border-radius:999px;background:#edf1e8;color:var(--green);padding:4px 10px;font-size:.78rem;font-weight:700;margin:2px}
+.big{font-size:2rem}.muted{color:var(--muted)}.good{color:#287344;font-weight:800}.bad{color:#a3442b;font-weight:800}
+.soil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.soil-tile{border:1px solid var(--line);background:#fff;border-radius:15px;padding:10px;cursor:pointer;text-align:left;color:var(--ink);margin:0}.soil-tile[aria-pressed=true]{border:2px solid var(--green);box-shadow:0 0 0 3px #dce9d9}.soil-photo{height:125px;border-radius:10px;overflow:hidden;margin-bottom:9px;background:#d9c8a8}.soil-photo img{width:100%;height:100%;object-fit:cover;display:block}.soil-tile b{display:block}
+.crop-card{display:grid;grid-template-columns:110px 1fr;gap:15px;align-items:start}.crop-photo{width:110px;height:120px;object-fit:cover;border-radius:13px;background:#e5e1d5}.metric{background:#f1f4eb;border-radius:12px;padding:10px}.metric small{display:block;color:var(--muted)}.metric strong{font-size:1.03rem}
+.chat{min-height:180px;max-height:48vh;overflow:auto;background:#f7f7f1;border:1px solid var(--line);border-radius:14px;padding:12px}.msg{padding:10px 13px;border-radius:14px;margin:8px 0;max-width:88%;white-space:pre-wrap}.me{background:#e3eadc;margin-left:auto}.bot{background:#fff;border:1px solid var(--line)}
+.scheme-card{border-left:4px solid var(--green)}.scheme-card h3{margin-top:7px}.scheme-card .scheme-meta{font-size:.8rem;color:var(--muted);font-weight:700}
+nav{position:fixed;z-index:10;bottom:0;left:0;right:0;background:rgba(35,48,36,.97);display:flex;justify-content:center;gap:clamp(4px,3vw,28px);padding:8px 10px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}
+nav button{background:transparent;color:#f7f4e9;margin:0;padding:8px 12px;font-size:.82rem}nav button[aria-current=true]{color:#f2c76e;background:rgba(255,255,255,.09)}
+#google_translate_element{position:absolute;left:-9999px}
+footer{max-width:1120px;margin:20px auto;padding:0 20px;color:var(--muted);font-size:.82rem}
+@media(min-width:760px){main{padding-top:20px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.two-col>.card{margin:0}}
+@media(max-width:520px){header{padding:10px 14px}main{padding:8px 13px 24px}.brand span:last-child{font-size:.9rem}.lang{max-width:175px;font-size:.8rem}.crop-card{grid-template-columns:82px 1fr}.crop-photo{width:82px;height:100px}nav{gap:0}nav button{font-size:.72rem;padding:8px 7px}}
+@media print{header,nav,.noprint,button{display:none!important}body{padding:0;background:#fff}.card{break-inside:avoid;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="brand-mark">🌱</div><span>AGRI SMART AI</span></div>
+  <select class="lang" id="langSel" aria-label="Select language" onchange="setIndianLanguage(this.value)">
+    <option value="en">English</option><option value="as">অসমীয়া · Assamese</option><option value="bn">বাংলা · Bengali</option><option value="brx">बड़ो · Bodo</option><option value="doi">डोगरी · Dogri</option><option value="gu">ગુજરાતી · Gujarati</option><option value="hi">हिन्दी · Hindi</option><option value="kn">ಕನ್ನಡ · Kannada</option><option value="ks">کٲشُر · Kashmiri</option><option value="kok">कोंकणी · Konkani</option><option value="mai">मैथिली · Maithili</option><option value="ml">മലയാളം · Malayalam</option><option value="mni">মৈতৈলোন্ · Manipuri</option><option value="mr">मराठी · Marathi</option><option value="ne">नेपाली · Nepali</option><option value="or">ଓଡ଼ିଆ · Odia</option><option value="pa">ਪੰਜਾਬੀ · Punjabi</option><option value="sa">संस्कृतम् · Sanskrit</option><option value="sat">ᱥᱟᱱᱛᱟᱲᱤ · Santali</option><option value="sd">سنڌي · Sindhi</option><option value="ta">தமிழ் · Tamil</option><option value="te">తెలుగు · Telugu</option><option value="ur">اردو · Urdu</option>
+  </select>
+</header>
+<div id="google_translate_element"></div>
+<main>
+<section id="login" class="screen">
+  <div class="hero"><div class="eyebrow">Farming • Knowledge • Growth</div><h1>Grow smarter.<br>Harvest better.</h1><p>Your digital farming companion for crop planning, soil awareness, water guidance and farmer welfare schemes.</p></div>
+  <div class="card" style="max-width:560px;margin:20px auto">
+    <h2>Welcome to Agri Smart AI</h2><p class="muted">Sign in to continue to your farm dashboard.</p>
+    <label for="contact">Mobile number or email</label><input id="contact" autocomplete="username" placeholder="98765 43210 or you@example.com">
+    <button onclick="sendOtp()">Send OTP</button>
+    <div id="otpBox" hidden><label for="otp">6-digit OTP</label><input id="otp" inputmode="numeric" maxlength="6" placeholder="Enter OTP"><p class="notice" id="demoOtp"></p><button onclick="verifyOtp()">Verify and continue</button></div>
+    <p id="loginErr" class="bad" role="alert"></p><p class="muted" style="font-size:.82rem">Demo mode: OTP is displayed on screen. Connect an SMS authentication backend before public deployment.</p>
+  </div>
+</section>
+
+<section id="profile" class="screen" hidden>
+  <div class="hero"><div class="eyebrow">Let's get to know your farm</div><h1>Your farmer profile</h1><p>Share a few details so recommendations can be more relevant to your location.</p></div>
+  <div class="card">
+    <div class="two-col">
+      <div><label for="pName">Full name *</label><input id="pName" placeholder="Enter your name"></div>
+      <div><label for="pPhone">Mobile number</label><input id="pPhone" placeholder="Your contact number"></div>
+      <div><label for="pState">State / Union Territory *</label><select id="pState" onchange="fillDistricts()"></select></div>
+      <div><label for="pDistrict">District</label><select id="pDistrict"></select></div>
+      <div><label for="pTaluk">Taluk / Tehsil / Block</label><input id="pTaluk" placeholder="Enter taluk or block"></div>
+      <div><label for="pPlace">Village / place</label><input id="pPlace" placeholder="Enter village"></div>
+      <div><label for="pLand">Land holding (acres)</label><input id="pLand" type="number" min="0" step=".1" placeholder="e.g. 2.5"></div>
+      <div><label for="pFarm">Farming type</label><select id="pFarm"><option>Crop farming</option><option>Horticulture</option><option>Organic / natural farming</option><option>Mixed farming</option><option>Allied activities</option></select></div>
+    </div>
+    <p class="notice">Location and land details help personalize the guidance. Avoid entering sensitive identity or bank details.</p>
+    <button onclick="saveProfile()">Save profile and continue</button><p id="profErr" class="bad"></p>
+  </div>
+</section>
+
+<section id="home" class="screen" hidden>
+  <div class="hero"><div class="eyebrow">Your farm, your future</div><h1 id="greet">Welcome, farmer</h1><p>Practical information for healthier soil, smarter crop choices and a more resilient farm.</p></div>
+  <div class="card-grid" style="margin-top:16px">
+    <div class="feature"><div class="big">🌱</div><h3>Soil intelligence</h3><p class="muted">Understand soil types and choose crops suited to your field.</p></div>
+    <div class="feature"><div class="big">💧</div><h3>Water planning</h3><p class="muted">Match irrigation needs with water availability and rainfall.</p></div>
+    <div class="feature"><div class="big">🌦️</div><h3>Seasonal planning</h3><p class="muted">Consider crop seasons, local climate and field conditions.</p></div>
+  </div>
+  <div class="card"><h2>Explore soil types</h2><p class="muted">Illustrative field photographs. Confirm your soil type through a soil test.</p><div class="soil-grid" id="soilGrid"></div></div>
+  <div class="two-col">
+    <div class="card"><h2>Water guide</h2><div class="feature"><b>💧 Low water</b><p>Consider drought-tolerant crops such as millets and pulses. Use mulching and efficient irrigation where suitable.</p></div><div class="feature"><b>💧💧 Moderate water</b><p>Maize, pulses and selected vegetables may fit, depending on soil and season.</p></div><div class="feature"><b>💧💧💧 High water</b><p>Paddy, sugarcane and banana may need reliable water and good drainage.</p></div></div>
+    <div class="card"><h2>Seasonal guide</h2><div class="feature"><b>🌧️ Kharif</b><p>Usually aligned with the southwest monsoon; sowing windows vary by region.</p></div><div class="feature"><b>🌤️ Rabi</b><p>Post-monsoon and winter crops; plan around residual moisture and irrigation.</p></div><div class="feature"><b>☀️ Summer</b><p>Choose short-duration crops with a dependable irrigation plan.</p></div></div>
+  </div>
+  <div class="card"><h2>Plan your next crop</h2><p>Use the crop advisor to compare options based on soil, water, season and rainfall.</p><button onclick="show('advisor')">Open crop advisor →</button></div>
+  <div class="card scheme-banner"><h2>🇮🇳 Government schemes for farmers</h2><p>Explore support for income, crop insurance, irrigation, credit, soil health, solar energy and farm infrastructure.</p><button onclick="show('schemes');renderSchemes()">Explore schemes →</button></div>
+</section>
+
+<section id="advisor" class="screen" hidden>
+  <div class="hero"><div class="eyebrow">Field-based planning</div><h1>Crop advisor</h1><p>Enter your field conditions to see indicative crop matches and a simple financial estimate.</p></div>
+  <div class="card">
+    <label>Soil type</label><div class="soil-grid" id="soilPick"></div>
+    <div class="two-col">
+      <div><label for="water">Water availability</label><select id="water"><option value="1">Low</option><option value="2" selected>Moderate</option><option value="3">High</option></select></div>
+      <div><label for="wx">Weather condition</label><select id="wx"><option value="hot">Hot</option><option value="mild" selected>Mild</option><option value="humid">Humid</option></select></div>
+      <div><label for="season">Growing season</label><select id="season"><option value="kharif">Kharif</option><option value="rabi">Rabi</option><option value="summer">Summer</option><option value="year">Year-round / perennial</option></select></div>
+      <div><label for="rain">Expected monthly rainfall (mm)</label><input id="rain" type="number" min="0" value="100"></div>
+      <div><label for="acres">Cultivated area (acres)</label><input id="acres" type="number" min=".1" step=".1" value="1"></div>
+    </div>
+    <button onclick="runAdvice()">Find suitable crops</button>
+    <p class="notice">This is an educational screening tool, not a scientific crop prescription. Verify variety, sowing window, fertilizer dose and market price with your local agriculture department or KVK.</p>
+  </div>
+  <div id="results" aria-live="polite"></div>
+</section>
+
+<section id="assistant" class="screen" hidden>
+  <div class="hero"><div class="eyebrow">Ask • Learn • Grow</div><h1>Farm assistant</h1><p>Quick starter guidance on soil, water, fertilizer, pests and farm economics.</p></div>
+  <div class="card"><div class="chat" id="chat"><div class="msg bot">Hello! Ask me about fertilizer, irrigation, rainfall, pests, crop planning or farm schemes. For diagnosis, share the crop, crop age and symptoms with your local agriculture officer.</div></div>
+    <label for="q">Your question</label><input id="q" placeholder="e.g. How can I reduce water use in my field?" onkeydown="if(event.key==='Enter')ask()"><button onclick="ask()">Send question</button>
+  </div>
+</section>
+
+<section id="schemes" class="screen" hidden>
+  <div class="hero"><div class="eyebrow">Farmer welfare • Public support</div><h1>Government schemes</h1><p>Explore major Indian agriculture and farmer-support programmes. Benefits and application windows depend on eligibility, state rules and current guidelines.</p></div>
+  <div class="card"><label for="schemeSearch">Find a scheme</label><input id="schemeSearch" placeholder="Search by scheme or category..." oninput="renderSchemes()"></div>
+  <div id="schemeList"></div>
+  <div class="card"><h2>State-level schemes</h2><p>State agriculture, horticulture, water resources and animal husbandry departments may offer additional subsidies and services. Select your state and check the official department portal or visit your block agriculture office / KVK.</p><a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener">Find schemes on MyScheme →</a></div>
+</section>
+</main>
+
+<nav id="nav" hidden aria-label="Main navigation">
+  <button data-go="home" aria-current="true">⌂ Home</button><button data-go="advisor">🌾 Advisor</button><button data-go="schemes">🇮🇳 Schemes</button><button data-go="assistant">✦ Assistant</button><button data-go="profile">♙ Profile</button>
+</nav>
+<footer>Agri Smart AI · Informational guidance only. Confirm local recommendations, scheme eligibility and current prices with official sources.</footer>
+
+<script>
+const STATES=["Andaman and Nicobar Islands","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Ladakh","Lakshadweep","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Puducherry","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"];
+const DISTRICTS={
+"Tamil Nadu":["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kallakurichi","Kanchipuram","Kanniyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"],
+"Kerala":["Thiruvananthapuram","Kollam","Pathanamthitta","Alappuzha","Kottayam","Idukki","Ernakulam","Thrissur","Palakkad","Malappuram","Kozhikode","Wayanad","Kannur","Kasaragod"],
+"Karnataka":["Bagalkot","Ballari","Belagavi","Bengaluru Rural","Bengaluru Urban","Bidar","Chamarajanagar","Chikkaballapur","Chikkamagaluru","Chitradurga","Dakshina Kannada","Davanagere","Dharwad","Gadag","Hassan","Haveri","Kalaburagi","Kodagu","Kolar","Koppal","Mandya","Mysuru","Raichur","Ramanagara","Shivamogga","Tumakuru","Udupi","Uttara Kannada","Vijayapura","Yadgir"],
+"Andhra Pradesh":["Alluri Sitharama Raju","Anakapalli","Anantapuramu","Annamayya","Bapatla","Chittoor","Dr. B. R. Ambedkar Konaseema","East Godavari","Eluru","Guntur","Kakinada","Krishna","Kurnool","Nandyal","NTR","Palnadu","Parvathipuram Manyam","Prakasam","Sri Potti Sriramulu Nellore","Sri Sathya Sai","Srikakulam","Tirupati","Visakhapatnam","Vizianagaram","West Godavari","YSR Kadapa"],
+"Maharashtra":["Ahmednagar","Akola","Amravati","Aurangabad","Beed","Bhandara","Buldhana","Chandrapur","Dhule","Gadchiroli","Gondia","Hingoli","Jalgaon","Jalna","Kolhapur","Latur","Mumbai","Nagpur","Nanded","Nandurbar","Nashik","Osmanabad","Palghar","Parbhani","Pune","Raigad","Ratnagiri","Sangli","Satara","Sindhudurg","Solapur","Thane","Wardha","Washim","Yavatmal"]
+};
+const SOILS=["clay","loam","sandy","red","black","alluvial"];
+const SOIL_IMAGES={
+clay:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=85",
+loam:"https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=700&q=85",
+sandy:"https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=700&q=85",
+red:"https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=700&q=85",
+black:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=85",
+alluvial:"https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=700&q=85"
+};
+const SOIL_NAMES={clay:"Clay soil",loam:"Loam soil",sandy:"Sandy soil",red:"Red soil",black:"Black soil",alluvial:"Alluvial soil"};
+const SOIL_DESC={clay:"Fine-textured soil that can hold considerable water; drainage and structure matter.",loam:"A balanced mixture of sand, silt and clay; often suitable for many crops.",sandy:"Coarse soil with quick drainage; organic matter and frequent light irrigation may help.",red:"Iron-rich soil; fertility and water-holding capacity vary by location.",black:"Clay-rich soil that can retain moisture and may crack when dry.",alluvial:"River-deposited soil; properties vary with location and sediment."};
+let selectedSoil="loam",profile=null,demoCode="";
+const crops=[
+{id:"groundnut",name:"Groundnut",img:"https://images.unsplash.com/photo-1567892737950-30c4db37cd89?auto=format&fit=crop&w=500&q=80",seasons:["kharif","summer"],water:1,soils:["sandy","red","loam"],rain:[30,150],yield:9,price:6783,cost:16000,fert:"Use soil-test-based basal nutrients; gypsum may be recommended at pegging in suitable soils.",note:"Avoid prolonged waterlogging; use locally recommended varieties."},
+{id:"maize",name:"Maize",img:"https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=500&q=80",seasons:["kharif","rabi","summer"],water:2,soils:["loam","alluvial","red"],rain:[60,200],yield:22,price:2400,cost:20000,fert:"Apply nutrients in split doses based on soil test and local package of practices.",note:"Ensure drainage and critical-stage irrigation."},
+{id:"paddy",name:"Paddy (Rice)",img:"https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=500&q=80",seasons:["kharif","rabi"],water:3,soils:["clay","loam","alluvial"],rain:[100,300],yield:25,price:2369,cost:30000,fert:"Use soil-test-based NPK recommendations; split nitrogen according to crop stage.",note:"Water-saving methods such as alternate wetting and drying may suit suitable fields."},
+{id:"ragi",name:"Finger millet (Ragi)",img:"https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=500&q=80",seasons:["kharif","rabi"],water:1,soils:["red","sandy","loam"],rain:[30,120],yield:11,price:4290,cost:10000,fert:"Incorporate well-decomposed organic manure and follow local soil-test recommendations.",note:"A useful millet option in several rainfed systems."},
+{id:"cotton",name:"Cotton",img:"https://images.unsplash.com/photo-1594911772121-8f7db7a9b8c6?auto=format&fit=crop&w=500&q=80",seasons:["kharif"],water:2,soils:["black","red"],rain:[50,150],yield:8,price:7710,cost:25000,fert:"Follow state-recommended nutrient schedule and avoid excess nitrogen.",note:"Monitor sucking pests and bollworms through the season."},
+{id:"blackgram",name:"Black gram",img:"https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=500&q=80",seasons:["kharif","rabi"],water:1,soils:["black","red","loam"],rain:[30,120],yield:4,price:7400,cost:9000,fert:"Use seed treatment and recommended starter nutrients based on local guidance.",note:"Avoid water stagnation; monitor yellow mosaic virus and whitefly."},
+{id:"sugarcane",name:"Sugarcane",img:"https://images.unsplash.com/photo-1599909533605-9d4f7f9c6f4b?auto=format&fit=crop&w=500&q=80",seasons:["year","kharif"],water:3,soils:["loam","clay","alluvial"],rain:[80,250],yield:350,price:355,cost:60000,fert:"Nutrient schedule depends on variety, duration and local recommendations.",note:"Long-duration crop; reliable irrigation and drainage are important."},
+{id:"turmeric",name:"Turmeric",img:"https://images.unsplash.com/photo-1615485500704-8e990f9900f2?auto=format&fit=crop&w=500&q=80",seasons:["year","kharif"],water:2,soils:["loam","red","alluvial"],rain:[80,200],yield:10,price:12000,cost:80000,fert:"Incorporate organic matter and apply nutrients based on soil test.",note:"Check local market trends and curing requirements before planting."},
+{id:"banana",name:"Banana",img:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=500&q=80",seasons:["year"],water:3,soils:["loam","alluvial","clay"],rain:[80,200],yield:300,price:1500,cost:120000,fert:"Use a locally recommended variety and split nutrient schedule.",note:"Provide drainage, wind protection and suitable support."},
+{id:"tomato",name:"Tomato",img:"https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=500&q=80",seasons:["rabi","summer"],water:2,soils:["loam","red"],rain:[20,80],yield:150,price:1500,cost:50000,fert:"Use balanced nutrients based on soil test; avoid excessive nitrogen.",note:"Use staking, drainage and integrated pest management."}
+];
+const schemes=[
+["PM-KISAN","Income support","Eligible landholding farmer families receive ₹6,000 per year in three instalments, subject to scheme exclusions and verification.","https://pmkisan.gov.in/"],
+["Pradhan Mantri Fasal Bima Yojana (PMFBY)","Crop insurance","Insurance cover for notified crops and risks under applicable state notifications and enrolment windows.","https://pmfby.gov.in/"],
+["Kisan Credit Card (KCC)","Agricultural credit","Institutional credit for eligible farmers to meet cultivation and allied activity needs. Terms depend on lender and eligibility.","https://www.myscheme.gov.in/"],
+["Soil Health Card Scheme","Soil testing","Soil test information and nutrient recommendations to support balanced fertilizer use.","https://soilhealth.dac.gov.in/"],
+["Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)","Irrigation","Supports irrigation development and water-use efficiency through applicable programme components.","https://pmksy.gov.in/"],
+["PM-KUSUM","Solar energy","Promotes solar-powered agricultural pumps and decentralized renewable energy under approved components.","https://pmkusum.mnre.gov.in/"],
+["Agriculture Infrastructure Fund (AIF)","Farm infrastructure","Financing support for eligible post-harvest management and community farming assets.","https://agriinfra.dac.gov.in/"],
+["PM Kisan Maandhan Yojana","Pension","Voluntary contributory pension scheme for eligible small and marginal farmers; pension benefits apply under scheme conditions.","https://maandhan.in/"],
+["Rashtriya Krishi Vikas Yojana (RKVY)","Agriculture development","Supports state-led agricultural development projects and innovation through approved plans.","https://agriwelfare.gov.in/"],
+["e-NAM","Market access","Electronic national agriculture market platform connecting participating markets and buyers.","https://www.enam.gov.in/"],
+["National Beekeeping and Honey Mission","Allied agriculture","Promotes scientific beekeeping, honey production and related value-chain development.","https://nbb.gov.in/"],
+["Mission for Integrated Development of Horticulture (MIDH)","Horticulture","Supports eligible horticulture development activities through state implementation plans.","https://midh.gov.in/"],
+["National Mission on Natural Farming","Natural farming","Promotes natural farming practices, farmer capacity building and bio-input systems under programme guidelines.","https://agriwelfare.gov.in/"]
+];
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.hidden=s.id!==id);document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.go===id)));window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.go)));
+function sendOtp(){const c=document.getElementById("contact").value.trim(),err=document.getElementById("loginErr");err.textContent="";if(!/^(\+?\d{10,13}|[^\s@]+@[^\s@]+\.[^\s@]+)$/.test(c)){err.textContent="Enter a valid mobile number or email.";return;}demoCode=String(Math.floor(100000+Math.random()*900000));document.getElementById("demoOtp").textContent="Demo OTP: "+demoCode;document.getElementById("otpBox").hidden=false;}
+function verifyOtp(){if(document.getElementById("otp").value.trim()!==demoCode){document.getElementById("loginErr").textContent="Incorrect OTP. Please try again.";return;}document.getElementById("nav").hidden=false;if(profile){show("home");}else show("profile");}
+function saveProfile(){const v=id=>document.getElementById(id).value.trim();if(!v("pName")||!v("pState")){document.getElementById("profErr").textContent="Please enter your name and select your state.";return;}profile={name:v("pName"),phone:v("pPhone"),state:v("pState"),district:v("pDistrict"),taluk:v("pTaluk"),place:v("pPlace"),land:v("pLand"),farm:v("pFarm")};document.getElementById("greet").textContent="Welcome, "+profile.name;document.getElementById("acres").value=profile.land||1;show("home");}
+function fillStates(){const s=document.getElementById("pState");s.innerHTML='<option value="">Select state</option>'+STATES.map(x=>`<option>${x}</option>`).join("");fillDistricts();}
+function fillDistricts(){const s=document.getElementById("pState").value,list=DISTRICTS[s]||[];document.getElementById("pDistrict").innerHTML='<option value="">Select district</option>'+list.map(x=>`<option>${x}</option>`).join("");}
+function soilMarkup(k){return `<div class="soil-photo"><img src="${SOIL_IMAGES[k]}" alt="${SOIL_NAMES[k]}" loading="lazy"></div><b>${SOIL_NAMES[k]}</b><small class="muted">${SOIL_DESC[k]}</small>`;}
+function renderSoils(){document.getElementById("soilGrid").innerHTML=SOILS.map(k=>`<div class="feature">${soilMarkup(k)}</div>`).join("");document.getElementById("soilPick").innerHTML=SOILS.map(k=>`<button type="button" class="soil-tile" aria-pressed="${k===selectedSoil}" onclick="pickSoil('${k}')">${soilMarkup(k)}</button>`).join("");}
+function pickSoil(k){selectedSoil=k;renderSoils();}
+function money(n){return "₹"+Math.round(n).toLocaleString("en-IN");}
+function runAdvice(){const water=+document.getElementById("water").value,season=document.getElementById("season").value,rain=+document.getElementById("rain").value,acres=+document.getElementById("acres").value;if(!(acres>0)||rain<0){alert("Enter valid land area and rainfall.");return;}const matches=crops.map(c=>{let score=0;if(c.water<=water)score+=2;if(c.soils.includes(selectedSoil))score+=3;if(c.seasons.includes(season)||c.seasons.includes("year")||season==="year")score+=2;if(rain>=c.rain[0]&&rain<=c.rain[1])score+=2;return {...c,score,revenue:c.yield*c.price*acres,cost:c.cost*acres};}).filter(c=>c.score>=4).sort((a,b)=>b.score-a.score).slice(0,6);const root=document.getElementById("results");if(!matches.length){root.innerHTML='<div class="card">No strong crop matches from these inputs. Please check your inputs and consult your local agriculture officer.</div>';return;}root.innerHTML=`<div class="card"><h2>Indicative crop matches</h2><p class="notice">Estimates use sample yield, price and cost assumptions. They are not live market rates or guaranteed returns. Replace with local data before making decisions.</p>${matches.map((c,i)=>{const profit=c.revenue-c.cost;return `<div class="card crop-card"><img class="crop-photo" src="${c.img}" alt="${c.name}" loading="lazy"><div><span class="tag">Match score ${c.score}/9</span><h3>${i+1}. ${c.name}</h3><div class="card-grid"><div class="metric"><small>Estimated gross income</small><strong>${money(c.revenue)}</strong></div><div class="metric"><small>Estimated cultivation cost</small><strong>${money(c.cost)}</strong></div><div class="metric"><small>Indicative balance</small><strong class="${profit>=0?'good':'bad'}">${money(profit)}</strong></div></div><p><b>Nutrition:</b> ${c.fert}</p><p><b>Field note:</b> ${c.note}</p></div></div>`;}).join("")}<div class="actions noprint"><button onclick="window.print()">Print / Save PDF</button><button class="secondary" onclick="shareReport()">Share report</button></div></div>`;root.scrollIntoView({behavior:"smooth"});}
+function shareReport(){const txt="Agri Smart AI crop planning report. These are indicative estimates; verify locally.";window.open("https://wa.me/?text="+encodeURIComponent(txt),"_blank","noopener");}
+function renderSchemes(){const q=(document.getElementById("schemeSearch")?.value||"").toLowerCase();document.getElementById("schemeList").innerHTML=schemes.filter(s=>s.join(" ").toLowerCase().includes(q)).map((s,i)=>`<div class="card scheme-card"><div class="scheme-meta">${s[1]}</div><h3>${s[0]}</h3><p>${s[2]}</p><a href="${s[3]}" target="_blank" rel="noopener noreferrer">Official information and portal →</a></div>`).join("")||'<div class="card">No matching schemes found.</div>';}
+const answers=[
+{keys:["fertilizer","fertiliser","urea","dap","உரம்","யூரியா","खाद"],answer:"Start with a soil test. Fertilizer type and dose depend on crop, variety, soil test, season and local recommendations. Avoid applying excess nitrogen; split applications may improve efficiency."},
+{keys:["water","irrigation","நீர்","தண்ணீர்","पानी","सिंचाई"],answer:"Irrigate according to crop stage, soil texture and weather. Drip or sprinkler systems can improve water-use efficiency in suitable crops. Check local subsidy eligibility before installing equipment."},
+{keys:["rain","மழை","बारिश","वर्षा"],answer:"Use local weather forecasts and advisories before sowing or spraying. Ensure field drainage before heavy rain and avoid spraying when rain or strong wind is expected."},
+{keys:["pest","disease","பூச்சி","நோய்","कीट"],answer:"Inspect the crop regularly and identify the pest before treatment. Use integrated pest management, field sanitation and only locally approved products at label rates. Contact your KVK or agriculture officer for diagnosis."},
+{keys:["profit","price","லாபம்","விலை","मुनाफा"],answer:"Farm returns depend on market price, yield, quality, transport and input costs. Compare local mandi prices and calculate all costs before deciding what to grow."},
+{keys:["scheme","திட்டம்","योजना","pm-kisan","pmkisan"],answer:"Open the Government Schemes section for major programmes and official links. Eligibility, enrolment windows and benefits can change; verify details on the official portal or at your agriculture office."}
+];
+function ask(){const input=document.getElementById("q"),q=input.value.trim();if(!q)return;const chat=document.getElementById("chat");const safe=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));chat.insertAdjacentHTML("beforeend",`<div class="msg me">${safe(q)}</div>`);const hit=answers.find(a=>a.keys.some(k=>q.toLowerCase().includes(k)));const answer=hit?hit.answer:"I can help with general information about soil, fertilizer, irrigation, rainfall, pests, prices and government schemes. For crop-specific diagnosis, contact your local KVK or agriculture officer.";chat.insertAdjacentHTML("beforeend",`<div class="msg bot">${safe(answer)}</div>`);input.value="";chat.scrollTop=chat.scrollHeight;}
+function setIndianLanguage(code){if(code==="en"){const combo=document.querySelector(".goog-te-combo");if(combo){combo.value="en";combo.dispatchEvent(new Event("change"));}return;}const combo=document.querySelector(".goog-te-combo");if(combo){combo.value=code;combo.dispatchEvent(new Event("change"));}else{alert("Translation service is loading. Please try again in a moment.");}}
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:"en",includedLanguages:"as,bn,gu,hi,kn,ml,mr,ne,or,pa,sa,sd,ta,te,ur",autoDisplay:false}, "google_translate_element");}
+fillStates();renderSoils();show("login");
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
